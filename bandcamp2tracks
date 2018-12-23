@@ -1,0 +1,14 @@
+#!/usr/bin/sed -f
+# formatter for track listing copy-pastes from bandcamp
+
+/^\s*$/d
+
+/^[0-9]\+\./ {
+	:again
+	N
+	s/\s\n//
+	t again
+
+	N
+	s/^\([0-9]\+\)\.\s*\(.*\)\([0-9][0-9]:[0-9][0-9]\)/\1\t\2\t\3/
+}
