@@ -77,6 +77,9 @@ do
 	m_delta=$(echo $length | cut -d':' -f1)
 	s_delta=$(echo $length | cut -d':' -f2)
 
+	m_delta=${m_delta##0}
+	s_delta=${s_delta##0}
+
 	s_offset=$((s_offset + s_delta))
 	m_offset=$((m_offset + m_delta + $(echo "$s_offset / 60" | bc)))
 	s_offset="$(echo "$s_offset % 60" | bc)"
